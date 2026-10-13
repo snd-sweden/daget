@@ -20,11 +20,11 @@ pip install daget
 
 Download dataset via DOI or landing page url:
 
-`daget https://doi.org/10.5878/331q-3p13 ./destination`
+`daget https://doi.org/10.5878/10.5878/z8wq-5q93 ./destination`
 
 or short form doi:
 
-`daget 10.5878/331q-3p13 ./destination`
+`daget 10.5878/10.5878/z8wq-5q93 ./destination`
 
 ### Example
 ```text
@@ -39,6 +39,18 @@ landing page:  https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7
  73.3KiB  Spreadsheet - Conceptions of democracy 10-2021.csv
  64.9KiB  Spreadsheet - Conceptions of democracy 10-2021.xlsx
  704.8KiB  downloaded 
+```
+
+### Use in a python script
+
+```python
+import daget
+
+# download into an empty or new directory, returns the file list (with local 'path')
+files = daget.download("10.7910/DVN/LFH4H8", "./destination")
+
+# only list the files, nothing is downloaded
+files = daget.list_files("10.7910/DVN/LFH4H8")  # [{'name', 'url', 'size'}, ...]
 ```
 
 ## Supported data respositories with file metadata

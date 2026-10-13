@@ -3,3 +3,6 @@ class ResolveError(ValueError):
 
 class RepoError(Exception):
     pass
+
+class DestinationError(ValueError):
+    pass

@@ -16,11 +16,11 @@ def get_redirect_url(url):
   except urllib.error.HTTPError:
     raise ResolveError(f"{url} not found") 
   
-def download_file(url, target):
+def download_file(url, target, progress=None):
   opener = urllib.request.build_opener()
   opener.addheaders = [('User-agent', 'Mozilla/5.0'), ('Accept', '*/*')]
   urllib.request.install_opener(opener)
-  urllib.request.urlretrieve(url, target, show_progress)
+  urllib.request.urlretrieve(url, target, progress)
 
 def size_as_string(bytes, suffix="B"):
   for unit in ("", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi"):
