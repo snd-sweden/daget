@@ -1,5 +1,6 @@
 import requests, json
 from bs4 import BeautifulSoup
+from daget.exceptions import RepoError
 
 def get_file_list(url):
   daget_headers={'User-Agent' : 'daget', 'Accept' : 'application/ld+json'}
@@ -20,7 +21,13 @@ def get_file_list(url):
 
     schema_org = json.loads(text)
 
-  schema_files = schema_org['distribution']
+  schema_files = schema_org.get('distribution')
+
+  if not schema_files:
+    raise RepoError(
+        f"No downloadable files found in Schema.org metadata: {url}"
+    )
+
   if not isinstance(schema_files, list):
     schema_files = [schema_files]
 
